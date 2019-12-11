@@ -5,17 +5,139 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>hogehoge</title>
+  <style>
+    h1 {
+      margin: 0;
+      margin: 5px 0;
+    }
+    p {
+      margin: 0;
+      margin-left: 5px;;
+    }
+    a,
+    a:visited,
+    a:hover,
+    a:focus {
+      color: #777;
+      text-decoration: none;;
+    }
+    a:hover {
+      color: #000;
+      text-decoration: underline;;
+    }
+    .article {
+      display: flex;
+      padding: 5px;
+      border-bottom: 1px solid #aaa;
+      justify-content: space-between;
+    }
+    .article__title:before {
+      content: "◇";
+      margin-right: 3px;
+    }
+  </style>
 </head>
 <body>
+  <h1>qiitaのlikeリストからスクレイプ</h1>
+  <div class="articleBox">
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+    <div class="article">
+      <div class="article__title"><a href=""></a></div>
+      <p class="article__author"></p>
+    </div>
+  </div>
+
   <script>
-    let req = new XMLHttpRequest();
+    // API呼び出し
+    let req = new XMLHttpRequest(),
+    title = document.querySelectorAll('.article__title a'),
+    author = document.querySelectorAll('.article__author');
+
     req.open('GET', 'https://simplescraper.io/api/zScEACu82MmfSSHgHIFa?apikey=2i1dgxeslGJdEcjsxVzJ2ggz4GU8IAA4&offset=0&limit=100', true);
     req.responseType = 'json';
-    req.onload =()=> {
-      var data = this.response;
-      console.log(data);
+    req.onload = function(){
+      let data = this.response;
+      data.data.forEach(function(value, index, array){
+        title[index].innerText = value.articleTitle;
+        title[index].href = value.articleTitle_link;
+        author[index].innerText = value.articleDay;
+      });
     }
-
     req.send();
   </script>
 </body>
