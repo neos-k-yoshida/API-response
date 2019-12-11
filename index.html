@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>hogehoge</title>
+</head>
+<body>
+  <script>
+    let req = new XMLHttpRequest();
+    req.open('GET', 'https://simplescraper.io/api/zScEACu82MmfSSHgHIFa?apikey=2i1dgxeslGJdEcjsxVzJ2ggz4GU8IAA4&offset=0&limit=100', true);
+    req.responseType = 'json';
+    req.onload =()=> {
+      var data = this.response;
+      console.log(data);
+    }
+
+    req.send();
+  </script>
+</body>
+</html>
